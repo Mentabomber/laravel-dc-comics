@@ -23,8 +23,9 @@ return new class extends Migration
             $table -> string("series");
             $table -> date("sale_date");
             $table -> string("type");
-            // $table -> string("artists");
-            // $table -> string("writers");
+
+            $table -> json("artists");
+            $table -> json("writers");
 
             $table->timestamps();
         });
