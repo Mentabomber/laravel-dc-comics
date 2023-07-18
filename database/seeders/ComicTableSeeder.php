@@ -240,8 +240,8 @@ class ComicTableSeeder extends Seeder
                 "sale_date" => $comic["sale_date"],
                 "type" => $comic["type"],
 
-                "artists" => json_encode($comic["artists"]),
-                "writers" => json_encode($comic["writers"])
+                // "artists" => json_encode($comic["artists"]),
+                // "writers" => json_encode($comic["writers"])
             ]);
         }
     }
