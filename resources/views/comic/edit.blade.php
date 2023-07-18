@@ -45,7 +45,7 @@
             <input type="text" name="price" id="price" value="{{ $comic->price }}">
             <br>
 
-            <input class="my-3" type="submit" value="CREATE">
+            <input class="my-3" type="submit" value="EDIT">
         </form>
         <a href="/">Back to Home</a>
     </div>
