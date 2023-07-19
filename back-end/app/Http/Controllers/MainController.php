@@ -29,18 +29,11 @@ class MainController extends Controller
 
     public function store(Request $request) {
 
-        $comics = $request -> all();
+        $comics = $request -> validate(
+            $this -> getValidationRule()
+        );
 
-        $comic = Comic :: create([
-
-            "title" => $comics["title"],
-            "description" => $comics["description"],
-            "thumb" => $comics["thumb"],
-            "price" => $comics["price"],
-            "series" => $comics["series"],
-            "sale_date" => $comics["sale_date"],
-            "type" => $comics["type"]
-        ]);
+        $comic = Comic :: create($comics);
 
         return redirect() -> route("comics.show", $comic -> id);
     }
@@ -52,7 +45,10 @@ class MainController extends Controller
     }
     public function update(Request $request, $id) {
 
-        $comics = $request -> all();
+
+        $comics = $request -> validate(
+            $this -> getValidationRule()
+        );
 
         $comic = Comic :: findOrFail($id);
 
@@ -68,5 +64,18 @@ class MainController extends Controller
         $comic -> delete();
 
         return redirect() -> route('comics.index');
+    }
+    private function getValidationRule() {
+
+        return [
+            'title' => 'required',
+            'description' => 'required',
+            'thumb' => 'required',
+            'price' => 'required',
+            'series' => 'required',
+            "sale_date" => 'required|date',
+            "type" => 'required'
+
+        ];
     }
 }

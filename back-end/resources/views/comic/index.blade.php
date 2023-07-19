@@ -14,11 +14,12 @@
                     </a>
                     <a class="mx-3 btn btn-primary" href="{{ route('comics.edit', $comic->id) }}"> Edit </a>
                     <form class="d-inline" method="POST" action="{{ route('comics.destroy', $comic->id) }}">
-
                         @csrf
                         @method('DELETE')
 
-                        <input class="mx-3 btn btn-primary" type="submit" value="DELETE">
+                        <input class="mx-3 btn btn-primary" type="submit" value="DELETE"
+                            onclick="return confirm('Are you sure?')">
+
                     </form>
                 </li>
             @endforeach
